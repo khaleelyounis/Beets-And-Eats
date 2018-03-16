@@ -97,14 +97,14 @@ function getEventInfo() {
  * @returns: {undefined}
  * @calls: none
  */
-function getUserLocation(){
-	navigator.geolocation.getCurrentPosition(function(position){
+function getUserLocation() {
+	navigator.geolocation.getCurrentPosition(function (position) {
 		var geocoder = new google.maps.Geocoder();
 		var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		geocoder.geocode({'latLng' : location}, function(results, status){
-			if (status == google.maps.GeocoderStatus.OK){
+		geocoder.geocode({ 'latLng': location }, function (results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
 				var city = results[0].address_components[3].long_name;
-				var state = results[0].address_components[5].short_name;
+				var state = results[0].address_components[4].short_name;
 				$(".city-name").val(city);
 				$(".state-code").val(state);
 			}
@@ -425,7 +425,7 @@ function renderMarker(place, color) {
 		icon: color
 	});
 
-	marker.addListener('click', function() {
+	marker.addListener('click', function () {
 		openWindow(place, marker);
 	});
 }
@@ -543,9 +543,14 @@ function populateEventSideBar(eventLocation) {
 	let tickets = $("<a>", {
 		href: eventLocation.ticketURL,
 		text: "BUY TICKETS",
-		target: "_blank"
+		target: "_blank",
+		css: {
+			"display": "block",
+			"text-align": "center",
+			"font-size": "18px"
+		}
 	});
-	container.append(image, eventName, venueName, time, tickets);
+	container.append(image, eventName, tickets, venueName, time);
 	return container;
 }
 
