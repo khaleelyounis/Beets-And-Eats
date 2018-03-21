@@ -12,9 +12,9 @@ Begin by entering the location and date of the night you want to plan. Next, scr
 ![Listings Page](images/listings.jpg) | ![Map Page](images/map.jpg)
 :-------------------------:|:-------------------------:
 
-## Built With
+## Technologies Used
 
-* Javascript
+* JavaScript
 * jQuery
 * AJAX
 * HTML5
@@ -27,17 +27,17 @@ Begin by entering the location and date of the night you want to plan. Next, scr
 ## Tools Used
 
 * Git
-* Github
-* Meistertask
-* JSDocs
+* GitHub
+* MeisterTask
+* JSDoc
 
 ## Authors
 
-* Andrea Wayte
-* Crystal Navarro
-* Kelcey Lorenzo
-* Khaleel Younis
-* Nick Quan
+* Andrea Wayte [GitHub](https://github.com/andreasandpiper) | [Portfolio](https://andreawayte.com/)
+* Crystal Navarro [GitHub](https://github.com/xoxocrystyle) | [Portfolio](https://crystalnavarro.com/)
+* Kelcey Lorenzo [GitHub](https://github.com/m13kelore) | [Portfolio](https://kelceylorenzo.com/)
+* Khaleel Younis [GitHub](https://github.com/stallenvp) | [Portfolio](https://khaleelyounis.com/)
+* Nick Quan [GitHub](https://github.com/nickkquan) | [Portfolio](https://nickquan.com)
 
 ## About the Project
 
