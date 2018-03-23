@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 const yelp = require('yelp-fusion');
 const app = express();
@@ -18,6 +19,10 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
+
+app.get("/", (req, res) => {
+    res.send(express.static(path.join(__dirname, "../client", "index.html")));
+});
 
 app.get('/yelprequest', (req, res) => {
     console.log('req.query: ', req.query);
