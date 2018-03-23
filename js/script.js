@@ -129,17 +129,10 @@ function getEventInfo() {
  * @calls: none
  */
 function getUserLocation() {
-<<<<<<< HEAD:script.js
 	navigator.geolocation.getCurrentPosition(function (position) {
 		var geocoder = new google.maps.Geocoder();
 		var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		geocoder.geocode({ 'latLng': location }, function (results, status) {
-=======
-	navigator.geolocation.getCurrentPosition(function(position) {
-		var geocoder = new google.maps.Geocoder();
-		var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		geocoder.geocode({ latLng: location }, function(results, status) {
->>>>>>> 39c28e52e623343425d4cb1ad4d1c479949a7fdb:js/script.js
+		geocoder.geocode({ latLng: location }, function (results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var city = results[0].address_components[3].long_name;
 				var state = results[0].address_components[4].short_name;
@@ -248,7 +241,7 @@ function getTicketMasterConcerts(obj) {
 		dataType: "json",
 		method: "get",
 		url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=2uJN7TQdB59TfTrrXsnGAJgrtKLrCdTi",
-		success: function(response) {
+		success: function (response) {
 			if (!response.page.totalElements) {
 				searchErrorAlert();
 				checkForChildElements();
@@ -270,7 +263,7 @@ function getTicketMasterConcerts(obj) {
 			}
 			renderShowsOnDOM(ticketmasterData);
 		},
-		error: function(error) {
+		error: function (error) {
 			searchErrorAlert();
 			checkForChildElements();
 		}
@@ -297,24 +290,22 @@ function getYelpData(latLng, type, color) {
 	let arrayOfPlaces = [];
 	let ajaxConfig = {
 		dataType: "json",
-		url: "http://danielpaschal.com/yelpproxy.php",
+		url: "/yelprequest",
 		method: "GET",
 		data: {
 			latitude: latLng.lat,
 			longitude: latLng.lng,
 			term: type,
 			radius: 40000,
-			api_key:
-				"VFceJml03WRISuHBxTrIgwqvexzRGDKstoC48q7UrkABGVECg3W0k_EILnHPuHOpSoxrsX07TkDH3Sl9HtkHQH8AwZEmj6qatqtCYS0OS9Ul_A02RStw_TY7TpteWnYx"
 		},
-		success: function(response) {
-			for (let businessIndex = 0; businessIndex < response.businesses.length; businessIndex++) {
+		success: function (response) {
+			for (let businessIndex = 0; businessIndex < response.length; businessIndex++) {
 				let newPlace = createYelpRestaurant(response, businessIndex);
 				arrayOfPlaces.push(newPlace);
 			}
 			createMarkers(arrayOfPlaces, color);
 		},
-		error: function() {
+		error: function () {
 			console.error("The server returned no information.");
 		}
 	};
@@ -343,7 +334,7 @@ function handleConcertClick(eventObj) {
 		icon: "images/stage.png"
 	});
 
-	marker.addListener("click", function() {
+	marker.addListener("click", function () {
 		openVenueWindow(eventObj, marker);
 	});
 
@@ -408,7 +399,7 @@ function createShowDOMElement(eventDetails) {
 	let listing = $("<div>", {
 		class: "show-listing col-lg-6 col-md-6 col-xs-12 col-sm-12",
 		on: {
-			click: function() {
+			click: function () {
 				handleConcertClick(eventDetails);
 				scrollPage("#map");
 				let showInfo = populateEventSideBar(eventDetails);
@@ -485,11 +476,7 @@ function renderMarker(place, color) {
 		icon: color
 	});
 
-<<<<<<< HEAD:script.js
-	marker.addListener('click', function () {
-=======
-	marker.addListener("click", function() {
->>>>>>> 39c28e52e623343425d4cb1ad4d1c479949a7fdb:js/script.js
+	marker.addListener("click", function () {
 		openWindow(place, marker);
 	});
 }
@@ -625,13 +612,9 @@ function populateEventSideBar(eventInfo) {
 			"font-size": "18px"
 		}
 	});
-<<<<<<< HEAD:script.js
-	container.append(image, eventName, tickets, venueName, time);
-=======
 	eventHeader.append(image, eventName);
 	eventBody.append(venueName, time, tickets, information);
 	container.append(eventHeader, eventBody);
->>>>>>> 39c28e52e623343425d4cb1ad4d1c479949a7fdb:js/script.js
 	return container;
 }
 
@@ -641,7 +624,7 @@ function populateEventSideBar(eventInfo) {
  * @return{object} per location
  */
 function createYelpRestaurant(data, yelpDataIndex) {
-	var locationObject = data.businesses[yelpDataIndex];
+	var locationObject = data[yelpDataIndex];
 	let yelpBusiness = {};
 	yelpBusiness.name = locationObject.name;
 	yelpBusiness.address = locationObject.location.display_address.join("\n");
@@ -728,7 +711,7 @@ function scrollPage(element) {
 /***************************************************************************
  * Event listener for window scroll and collapses menu
  */
-$(window).on("scroll", function() {
+$(window).on("scroll", function () {
 	$(".navbar-collapse.collapse").removeClass("in");
 	$(".navbar-collapse.collapse").attr("aria-expanded", false);
 
@@ -741,7 +724,7 @@ $(window).on("scroll", function() {
  * @returns: {undefined}
  * @calls: none
  */
-$(document).scroll(function() {
+$(document).scroll(function () {
 	let $nav = $(".navbar-default");
 	$nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
 });
