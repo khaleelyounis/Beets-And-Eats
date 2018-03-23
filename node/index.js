@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.send(express.static(path.join(__dirname, "../client", "index.html")));
+    res.send(express.static(path.join(__dirname, "../", "index.html")));
 });
 
 app.get('/yelprequest', (req, res) => {
