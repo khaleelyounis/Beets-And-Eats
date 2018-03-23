@@ -290,7 +290,7 @@ function getYelpData(latLng, type, color) {
 	let arrayOfPlaces = [];
 	let ajaxConfig = {
 		dataType: "json",
-		url: "node/index.js/yelprequest",
+		url: "/yelprequest",
 		method: "GET",
 		data: {
 			latitude: latLng.lat,
