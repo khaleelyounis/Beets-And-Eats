@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../client', "index.html")));
 
 //Route for all static files from the client side
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client', 'index.html'));
+    res.send(path.resolve(__dirname, '../client', 'index.html'));
 });
 
 app.get('/yelprequest', (req, res) => {
