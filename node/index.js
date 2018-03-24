@@ -20,10 +20,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //Path middleware
-app.use(express.static(path.join(__dirname, "..", "client")));
+app.use(express.static(path.join(__dirname, "../client")));
 
-app.get('*', (req, res) => {
-    res.send(express.static(path.join(__dirname, "..", "client", "index.html")));
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'index.html'));
 });
 
 app.get('/yelprequest', (req, res) => {
