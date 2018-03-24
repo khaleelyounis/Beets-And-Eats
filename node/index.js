@@ -1,4 +1,3 @@
-'use strict';
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -20,9 +19,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-    res.send(express.static(path.join(__dirname, "../", "index.html")));
-});
+//Path middleware
+app.use(express.static(path.join(__dirname, '..', 'index.html')));
 
 app.get('/yelprequest', (req, res) => {
     console.log('req.query: ', req.query);
