@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 //Path middleware
 app.get("/", (req, res) => {
-    app.use(express.static(path.join(__dirname, '..', 'index.html')));
+    res.send(express.static(path.join(__dirname, "client", "index.html")));
 });
 
 app.get('/yelprequest', (req, res) => {

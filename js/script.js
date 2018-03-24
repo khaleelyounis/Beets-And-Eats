@@ -331,7 +331,7 @@ function handleConcertClick(eventObj) {
 		position: latLng,
 		map: map,
 		//icon provided by freepik.com
-		icon: "images/stage.png"
+		icon: "../images/stage.png"
 	});
 
 	marker.addListener("click", function () {
@@ -340,8 +340,8 @@ function handleConcertClick(eventObj) {
 
 	$(".foodInfo  .sectionInfo").remove();
 	//icons provided by freepik.com
-	getYelpData(latLng, "bar", "images/drink.png");
-	getYelpData(latLng, "food", "images/food.png");
+	getYelpData(latLng, "bar", "../images/drink.png");
+	getYelpData(latLng, "food", "../images/food.png");
 }
 /***************************************************************************
  * openVenueWindow - opens marker window for venue marker
