@@ -64,6 +64,10 @@ app.get('/yelprequest', (req, res) => {
     latitudeTest(req, latitude);
     longitudeTest(req, longitude);
     radiusTest(req, radius);
+    console.log('term: ', term);
+    console.log('latitude: ', latitude);
+    console.log('longitude: ', longitude);
+    console.log('radius: ', radius);
     const searchRequest = {
         term,
         latitude,
