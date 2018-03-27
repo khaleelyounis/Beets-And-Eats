@@ -43,7 +43,7 @@ function radiusTest(req, radius) {
 }
 
 function latitudeTest(req, latitude) {
-    let paterrn = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
+    let patern = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
     if (pattern.test(req.query.latitude)) {
         latitude: req.query.latitude;
     }
@@ -51,7 +51,7 @@ function latitudeTest(req, latitude) {
 }
 
 function longitudeTest(req, longitude) {
-    let paterrn = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
+    let patern = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
     if (pattern.test(req.query.longitude)) {
         longitude: req.query.longitude;
     }
