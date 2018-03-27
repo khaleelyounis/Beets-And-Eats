@@ -26,20 +26,58 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
 });
 
+function termTest(req, term) {
+    let pattern = /food|bar/g;
+    if (pattern.test(req.query.term)) {
+        term: req.query.term;
+    }
+    return term;
+}
+
+function radiusTest(req, radius) {
+    let pattern = /^[0-9]{5}$/;
+    if (pattern.test(req.query.radius)) {
+        radius: req.query.radius;
+    }
+    return radius;
+}
+
+function latitudeTest(req, latitude) {
+    let paterrn = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
+    if (pattern.test(req.query.latitude)) {
+        latitude: req.query.latitude;
+    }
+    return latitude;
+}
+
+function longitudeTest(req, longitude) {
+    let paterrn = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
+    if (pattern.test(req.query.longitude)) {
+        longitude: req.query.longitude;
+    }
+    return longitude;
+}
+
 app.get('/yelprequest', (req, res) => {
-    console.log('req.query: ', req.query);
+    let term, latitude, longitude, radius;
+    termTest(req, term);
+    latitudeTest(req, latitude);
+    longitudeTest(req, longitude);
+    radiusTest(req, radius);
     const searchRequest = {
-        term: req.query.term,
-        'latitude': req.query.latitude,
-        'longitude': req.query.longitude,
-        'radius': req.query.radius
+        term,
+        latitude,
+        longitude,
+        radius
     };
     client.search(searchRequest).then(response => {
         const firstResult = response.jsonBody.businesses;
         const prettyJson = JSON.stringify(firstResult, null, 4);
         res.send(prettyJson);
     }).catch(e => {
-        console.log(e);
+        res.json({
+            message: 'There was an error while finding data from Yelp.'
+        });
     });
 })
 
