@@ -26,48 +26,43 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
 });
 
-function termTest(req, term) {
+function termTest(req) {
     let pattern = /food|bar/g;
     if (pattern.test(req.query.term)) {
-        term: req.query.term;
+        var term = req.query.term;
     }
     return term;
 }
 
-function radiusTest(req, radius) {
+function radiusTest(req) {
     let pattern = /^[0-9]{5}$/;
     if (pattern.test(req.query.radius)) {
-        radius: req.query.radius;
+        var radius = req.query.radius;
     }
     return radius;
 }
 
-function latitudeTest(req, latitude) {
-    let patern = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
+function latitudeTest(req) {
+    let pattern = /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,10}/;
     if (pattern.test(req.query.latitude)) {
-        latitude: req.query.latitude;
+        var latitude = req.query.latitude;
     }
     return latitude;
 }
 
-function longitudeTest(req, longitude) {
-    let patern = /^([-+]?\d{1,2}([.]\d+)?),\s*([-+]?\d{1,3}([.]\d+)?)$/;
+function longitudeTest(req) {
+    let pattern = /^-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d{1,10}/;
     if (pattern.test(req.query.longitude)) {
-        longitude: req.query.longitude;
+        var longitude = req.query.longitude;
     }
     return longitude;
 }
 
 app.get('/yelprequest', (req, res) => {
-    let term, latitude, longitude, radius;
-    termTest(req, term);
-    latitudeTest(req, latitude);
-    longitudeTest(req, longitude);
-    radiusTest(req, radius);
-    console.log('term: ', term);
-    console.log('latitude: ', latitude);
-    console.log('longitude: ', longitude);
-    console.log('radius: ', radius);
+    var term = termTest(req);
+    var latitude = latitudeTest(req);
+    var longitude = longitudeTest(req);
+    var radius = radiusTest(req);
     const searchRequest = {
         term,
         latitude,
