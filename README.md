@@ -19,6 +19,8 @@ Begin by entering the location and date of the night you want to plan. Next, scr
 * AJAX
 * HTML5
 * CSS3
+* Node.js
+* Express
 * Bootstrap3
 * Google Maps API
 * Yelp API
